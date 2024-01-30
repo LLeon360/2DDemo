@@ -106,10 +106,18 @@ public class PlayerController : MonoBehaviour
                 Vector3 norm = contact.normal;
                 if(Vector3.Angle(norm, Vector3.up) < 45) {
                     isGrounded = true;
-                    Debug.Log("Grounded at "+ contact.point);
                     break;
                 }
             }
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        // if the player collides with the coin, destroy the coin
+        if (col.gameObject.tag == "Collectible")
+        {
+            Destroy(col.gameObject);
         }
     }
     void OnCollisionExit2D(Collision2D other)
