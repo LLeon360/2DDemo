@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
     {
         // TODO: Get references to the rigidbody and animator attached to the current GameObject
         rb = GetComponent<Rigidbody2D>();
-        // anim = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
 
         // initialize contacts list
         contactList = new List<ContactPoint2D>();
@@ -77,7 +77,7 @@ public class PlayerController : MonoBehaviour
         // TODO: change x velocity of player
         rb.velocity = new Vector2(x * speed, rb.velocity.y);
         // TODO: Here, we can handle animation transitioning logic
-        
+        anim.SetBool("IsRunning", x != 0);
     }
 
     private void Flip()
